@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Geolocation Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/freshwater-custom.min.css" />
+<link rel="stylesheet" href="jquery-mobile-latest/jquery.mobile-1.4.2.min.css" />
+<link rel="stylesheet" href="css/index.css">    
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="jquery-mobile-latest/jquery.mobile-1.4.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+<script type="text/javascript" charset="utf-8">
+  function onLoad() {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDy1bBAiDhmFfuKz6SerLvKyOIUqlFsX7c&sensor=true&' +
+  'callback=myGoogleMapsApiLoadedCallback';
+  document.body.appendChild(script);
+      navigator.notification.alert('has fired native alert');
+    }
+    
+function myGoogleMapsApiLoadedCallback(){
+   //console.log(script);
+   var button = document.getElementById('geoButton');
+    button.innerHTML = '<a data-role="button" style="margin-top:70px" class="ui-link ui-btn ui-btn-h ui-shadow ui-corner-all" onclick="getLocation();">Get your GPS Location</a>';
+}
+    
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+        var element = document.getElementById('geolocation');
+        //OUTPUT COORDINATES INFORMATION INTO HTML
+    element.innerHTML = '<h2>Detailed Gelocation information</h2><table class="geoTable"><tr><td class="noborder"></td><th>Latitude</th><th>Longitude</th><th>Altitude</th><th>Accuracy</th><th>Altitude Accuracy</th><th>Heading</th><th>Speed</th><th>Timestamp</th></tr>' +
+            '<tr><td class="head">Data Value</td>' +
+            '<td class="centre">' + position.coords.latitude  + '</td>' +
+            '<td class="centre">' + position.coords.longitude + '</td>' +
+            '<td class="centre">'  + position.coords.altitude + '</td>' +
+            '<td class="centre">'  + position.coords.accuracy + '</td>' +
+            '<td class="centre">'  + position.coords.altitudeAccuracy + '</td>' +
+            '<td class="centre">'  + position.coords.heading + '</td>' +
+            '<td class="centre">'  + position.coords.speed   + '</td>' +
+            '<td class="centre">' + new Date(position.timestamp) + '</td></tr>'+
+            '</table>' +
+            '<p align="center"><button data-theme="h" onclick="resetLocation();">Clear GPS Location</button><br /></p>';
+        
+        
+                    //GET LOCATION VARIABLES FROM API
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+                    var yourStartLatLng = new google.maps.LatLng(lat, lng);
+        
+                    //PUT GMAPS INFORMATION INTO PAGE
+                    $('#map_canvas').gmap({'center': yourStartLatLng});
+                    $('#map_canvas').gmap('option', 'zoom', 19);
+                    $('#map_canvas').gmap('option', 'mapTypeId', google.maps.MapTypeId.SATELLITE);
+                    $('#map_canvas').gmap('addMarker', {
+                                                        'position': yourStartLatLng, 
+                                                        'draggable': false, 
+                                                        'bounds': false
+                                                        });
+    }
+    // onError Callback sends user an alert message and refreshes screen to load all scripts again
+    //
+    function onError(error) {
+        alert('The Freshwater application failed to get your location. Please ensure that you have a successful WIFI or 3G/4G internet connection when using the Geolocation feature. ' +
+              'The Locator screen will now be refreshed. Please attempt Geolocation again.');
+        //PUT A TIMER ON ERROR TO REFRESH PAGE FOR GPS
+        setTimeout("window.location+='?refreshed';", .1000); 
+    }
+    
+//RESET GEOLOCATION PAGE TO TAKE ANOTHER LOCATION READING
+    function resetLocation(){
+        setTimeout("window.location+='?refreshed';", .1000); 
+    }
+    
+    //ATTACH FUNCTION TO BUTTON TO CALL GEOLOCATION
+  function getLocation() {
+        navigator.geolocation.getCurrentPosition(onSuccess ,onError,
+      { timeout: 1000, enableHighAccuracy: true } );
+    }
+</script>
+ 
+    </head>
+    <body onload="onLoad()">
+      <div id="locator" data-role="page">
+      <div data-role="header" class="myHeader" data-theme="f" data-position="fixed">
+          <h1 id="title">Freshwater Macro invertebrates</h1> 
+            <div data-role="navbar" data-iconpos="left">
+            <ul>
+              <li><a href="index.html" data-transition="none" data-ajax="false" data-icon="info">About</a></li>
+              <li><a href="filters.html" data-ajax="false" data-prefetch data-icon="grid">Filter</a></li>
+              <li><a href="contributors.html" data-transition="none" data-ajax="false" id="contributors" data-icon="custom">Contributors</a></li>
+              <li><a href="glossary.html" data-transition="none" data-ajax="false" id="glossary" data-icon="custom" >Glossary</a></li>
+              <li><a href="#" data-icon="location" class="ui-btnactive
+ui-state-persist">Locator</a></li>
+            </ul>
+          </div>
+      </div>
+      <div class="ui-content" id="content">
+          <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDy1bBAiDhmFfuKz6SerLvKyOIUqlFsX7c&sensor=true"></script>-->
+          <script src="js/jquery.ui.map.full.min.js" type="text/javascript"></script>
+          <div id="wrapper">
+            <h1>Geo Location Page</h1>
+          <p>This is the geolocator page. Please be patient, the map may take some time to load. Your location will be  marked on the map below. Please make sure that the device that you are using is connected to a reliable internet connection. This feature will not work without a consistent connection to the internet. Please note, the accuracy of the geolocation feature over a 3G/4G connection will be more accurate than using a WIFI connection.</p>
+            <div id="map_canvas">
+                <div id="geoButton">
+                 <p id="loadMaps"><img src="icons/ajax-bigLoaderBar.gif" /><br />Preparing device for Geolocation request...</p>
+              </div>
+           </div>
+          <p id="geolocation"></p>
+         </div>
+        </div>
+      <div data-role="footer" data-theme="f" data-position="fixed" data-tap-toggle="false">
+        <h5>&copy; Copyright Tallebudgera Beach OEST RTO | OEEC</h5>
+      </div>
+    </div>
+  </div>    
+</body>
+</html>

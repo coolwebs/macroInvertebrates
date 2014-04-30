@@ -1,0 +1,299 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#E4E4E4;
+    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #A7A7A7),
+        color-stop(0.51, #E4E4E4)
+    );
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px!important;
+    padding:0px!important;
+    text-transform: none;
+    width:100%;
+}
+
+/* Portrait layout (default) */
+.app {
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+/* Custom css file for the Freshwater app */
+#upText {font-size: 16px!important;}
+#filters-wrapper {margin-top: 0px!important; padding-top: 0px!important;}
+#specimen-wrapper {width: 100%; padding: 15px; }
+div.myHeader {font-size: 20px!important;}
+div.ui-grid-b {padding: 20px 20px 20px 0px;}
+div.source{text-align:center}
+body {text-transform: none!important;}
+hr { height: 2px; background-color: #ffffff;}
+.imgr {float:right; margin-left: 15px;}
+p#loadMaps {margin-top: 100px; text-align: center;}
+#map_canvas {width: 97.5%; height: 450px;}
+table.geoTable {width: 97.5%;}
+table.geoTable th {padding:5px; background-color: #333; color: #fff;}
+table.geoTable td {padding:5px;}
+table.geoTable td.head {background-color: #5e87b0; text-align: center; color: #fff; font-weight: bold;}
+table.geoTable td.centre {text-align: center;}
+table.geoTable th,table.geoTable td {border: 2px solid #666;}
+td.noborder {border: none!important; background-color: none!important;}
+div#wrapper {margin-left: 5px; padding:15px!important;}
+div#contributor-row-1, div#contributor-row-2, div#contributor-row-3 {width: 100%; margin-bottom: 20px; text-align: center; }
+div#contributor-row-1 img {padding-right:20px;}
+div#contributor-row-2 img {padding-right:25px;}
+div#contributor-row-3 img {padding-right:17px;}
+div#contributor-row-4 img {padding-right:8px;}
+
+
+@media screen{
+    @font-face
+    {
+        font-family: 'Finger Paint';
+        font-style: normal;
+        font-weight: normal;
+        src: local('Finger Paint'), local('Finger Paint'), url('../fonts/Finger_Paint/FingerPaint-Regular.ttf');       
+    }
+
+    @font-face
+    {
+        font-family: 'Doppio One';
+        font-style: normal;
+        font-weight: normal;
+        src: local('Doppio One'), local('Doppio One'), url('../fonts/Doppio_One/DoppioOne-Regular.ttf');       
+    }
+}
+
+#left-panel {width: 27%; display: inline-block; padding: 0px 0px 12px 6px; margin: 0px; background:#9fb5ce; min-height: 695px; }
+#right-panel {width: 72%; clear: both; float: right; padding: 10px 0px 12px 0px; margin: 0px; background:#fff;}
+div#left-panel > div#sorting-parameters{padding: 0px 8px 8px 8px; margin: 0px; border-top: 1px #ccc;}
+div#right-panel > div#display-section{padding: 5px 10px 0px 3px; height: 720px; overflow: auto; margin-top: -10px;}
+div.collapseBackground {background: #FFFFFF; width: 99%!important;}
+
+h1 {font-family: 'Finger Paint', cursive; }
+h5 {font-family: 'Finger Paint', cursive; font-size: 12px!important;}
+h1#title {background-image: url(../icons/freshwater-logo.png); background-repeat: no-repeat; background-position: 6% 50%; width:500px; height: auto; background-size: 42px 42px;}
+h1.sorting-title {font-family: 'Doppio One', sans-serif; color: #000000; margin-top:20px;}
+h2 {font-size: 14px!important;}
+.list-header {font-size: 15px!important;}
+ul.myGlossary li p {font-size: 13px!important;}
+table {font-size: 14px;}
+p {font-size: 14px;}
+div#container > div > a > figure > img {border: 5px solid #ffffff!important; box-shadow: 3px 3px 2px #ccc;}
+div#container > div > a, div#container > div > a:hover, div#container > div > a:visited {text-decoration: none; color: #777;}
+figure {padding:0px; margin:0px}
+figcaption{text-align: center;}
+
+.ui-dialog .ui-header,
+.ui-dialog ui.content,
+.ui-dialog .ui-footer {
+   max-width: 900px!important;   
+}
+
+div.ui-content {padding: 15px;}
+
+#contributors:after {
+    background-image: url("../icons/white/group@2x.png");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+}
+#glossary:after {
+    background-image: url("../icons/white/book@2x.png");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+}
+/* Custom css file for the Freshwater app */
+img.border {border: 5px solid #ffffff!important; box-shadow: 5px 5px 3px #ccc; float: left;}
+#Gallery {padding-right: 20px;}
+table{width:96%; border: 1px solid #CCCCCC; background: #fff; border-collapse: collapse;}
+tr td {padding:10px; border-spacing: 0px 0px; }
+.whiteBG {background:#FFFFFF;}
+.greyBG {background:#ececec;}
+div.clear { clear:both; margin-bottom: 10px; }
+hr.specimen { margin: 20px 0px 20px 0px; } 
+.video-expand {padding-right:44px;}
+div.myHeader > a {margin-top: 7px!important;}
+
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('icons/progressbar.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+
+/*  ISOTOPES FILTER PAGE CSS */
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+#container {
+  /*border: 1px solid;*/
+  padding: 0px;
+}
+
+.item {
+  width: 135px;
+  height: 125px;
+  margin: 4px;
+  float: left;
+}
+
+/*.item.next {
+  width: 60px;
+  height: 60px;
+  border: 5px solid black;
+  border-radius: 35px;
+}*/
+
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:         top, left, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */

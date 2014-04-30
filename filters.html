@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<title>Freshwater App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/freshwater-custom.min.css" />
+<link rel="stylesheet" href="jquery-mobile-latest/jquery.mobile-1.4.2.min.css" />
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(window).load(function() {
+	$(".loader").fadeOut("slow");
+})
+</script>
+<script type="text/javascript" src="jquery-mobile-latest/jquery.mobile-1.4.2.min.js"></script>   
+<link rel="stylesheet" href="css/index.css">
+<script type="text/javascript" charset="utf-8" src="js/jquery.isotope.min.js"></script>
+<script type="text/javascript">       
+        $(function(){
+          var $container = $('#container'),
+              $checkboxes = $('#filters input');
+
+          $container.isotope({
+            itemSelector: '.item'
+          });
+
+          $checkboxes.change(function(){
+            var filters = [];
+            // get checked checkboxes values
+            $checkboxes.filter(':checked').each(function(){
+              filters.push( this.value );
+            });
+            // ['.red', '.blue'] -> '.red, .blue'
+            filters = filters.join('');
+            $container.isotope({ filter: filters });
+          });
+
+          $('#shuffle').click(function(){
+            $container.isotope('shuffle');
+          });          
+        });
+
+    function resetCheckboxes()
+        {
+            window.location.reload(true);
+        }
+    </script>
+<link href="specimens/photoswipe.css" type="text/css" rel="stylesheet" />
+</head>      
+<body>
+<div class="loader"></div>
+<div id="filter" data-role="page" data-title="filter">
+      <div data-role="header" class="myHeader" data-theme="f" data-position="fixed">
+          <h1 id="title">Freshwater Macro invertebrates</h1> 
+         <div data-role="navbar" data-iconpos="left">
+            <ul>
+              <li><a href="index.html" data-transition="none" data-icon="info">About</a></li>
+              <li><a href="#" data-icon="grid" class="ui-btnactive ui-state-persist">Filter</a></li>
+              <li><a href="contributors.html" data-transition="none" id="contributors" data-icon="custom">Contributors</a></li>
+              <li><a href="glossary.html" data-transition="none" id="glossary" data-icon="custom" class="ui-icon-nodisc">Glossary</a></li>
+              <li><a href="locator.html" data-ajax="false" data-prefetch data-icon="location">Locator</a></li>
+            </ul>
+          </div>    
+      </div>
+      <div class="ui-content" id="content" style="background: #9fb5ce; padding: 0">
+        <div id="filters-wrapper">
+          <div id="left-panel">
+            <div id="sorting-parameters">
+              <h1 class="sorting-title">Sorting Filters</h1>
+              <hr />
+            <div id="filters">
+              <div data-role="collapsible-set" data-theme="d">
+                <div data-role="collapsible" class="collapseBackground">
+                  <h3>Size</h3>
+                  <p>Select whether the creature is microscopic or bigger than microscopic (can be seen with naked eye)</p>
+                <form>
+                    <fieldset data-role="controlgroup" class="filter option-set" data-filter-group="micro">
+                    <input type="radio" name="zooms" id="micro" value=".micro">
+                    <label for="micro">Microscopic</label>
+                    <input type="radio" name="zooms" id="nonmicro" value=".nonmicro">
+                    <label for="nonmicro">Non Microscopic</label>
+                </fieldset>
+                </form>
+                </div>
+                <div data-role="collapsible" class="collapseBackground">
+                  <h3>Shell</h3>
+                  <p>What type of shell does the creature have?</p>
+                <form>
+                    <fieldset data-role="controlgroup" class="filter option-set" data-filter-group="shell">
+                    <input type="radio" name="shells" id="no-shell" value=".noshell">
+                    <label for="no-shell">No shell</label>
+                    <input type="radio" name="shells" id="single-shell" value=".oneshell">
+                    <label for="single-shell">Single shell</label>
+                    <input type="radio" name="shells" id="double-shell" value=".twoshell">
+                    <label for="double-shell">Double shell</label>
+                </fieldset>
+                </form>
+                </div>
+                <div data-role="collapsible" class="collapseBackground">
+                  <h3>Legs</h3>
+                  <p>How many pairs of legs does the creature have?</p>
+                <form>
+                    <fieldset data-role="controlgroup" class="filter option-set" data-filter-group="legs">
+                    <input type="radio" name="legs" id="no-legs" value=".nolegs">
+                    <label for="no-legs">No legs</label>
+                    <input type="radio" name="legs" id="3pairs" value=".threepairs">
+                    <label for="3pairs">3 pairs</label>
+                    <input type="radio" name="legs" id="4pairs" value=".fourpairs">
+                    <label for="4pairs">4+ pairs</label>
+                </fieldset>
+                </form>
+                </div>
+                <div data-role="collapsible" data-defaults="true" class="collapseBackground">
+                  <h3>Tail</h3>
+                  <p>Does the animal have a tail or not? If so, how many tails present?</p>
+                <form>
+                    <fieldset data-role="controlgroup" class="filter option-set" data-filter-group="tail">
+                    <input type="radio" name="tails" id="no-tail" value=".notail">
+                    <label for="no-tail">No tail</label>
+                    <input type="radio" name="tails" id="oneTail" value=".onetail">
+                    <label for="oneTail">1 tail</label>
+                    <input type="radio" name="tails" id="twoTail" value=".twotail">
+                    <label for="twoTail">2 tails</label>
+                    <input type="radio" name="tails" id="threeTail" value=".threetail">
+                    <label for="threeTail">3 tails</label>
+                </fieldset>
+                </form>
+                </div>
+                <div data-role="collapsible" data-defaults="true" class="collapseBackground">
+                  <h3>Sensitivity</h3>
+                  <p>How sensitive is the animal?</p>
+                <form>
+                    <fieldset data-role="controlgroup" class="filter option-set" data-filter-group="sensitivity">
+                    <input type="radio" name="tolerance" id="vTolerant" value=".veryTol">
+                    <label for="vTolerant">Very Tolerant</label>
+                    <input type="radio" name="tolerance" id="tolerant" value=".tolerant">
+                    <label for="tolerant">Tolerant</label>
+                    <input type="radio" name="tolerance" id="sensitive" value=".sensitive">
+                    <label for="sensitive">Sensitive</label>
+                    <input type="radio" name="tolerance" id="vSensitive" value=".verySens" />
+                    <label for="vSensitive">Very Sensitive</label>
+                </fieldset>
+                </form>
+                </div>
+              </div>
+            </div>
+              <hr />
+              <br />
+            <form>
+                <input type="reset" onclick="resetCheckboxes()" value="Reset Button" />
+            </form>
+            </div>
+          </div>      
+            <div id="right-panel">
+              <div id="display-section">
+        <div data-foo="bar" id="container" style="margin: 0px;">
+              <div class="item nonmicro noshell threepairs notail veryTol"><a href="specimens/back-swimmer.html" data-transition="slide"><figure><img src="img/thumbs/Backswimmer-thumb.jpg" width="125" height="100" /><figcaption>Back Swimmer</figcaption></figure></a></div>
+              <div class="item nonmicro noshell nolegs notail veryTol"><a href="specimens/biting-midge-larvae.html" data-transition="slide"><figure><img src="img/thumbs/biting-midge-thumb.jpg" width="125" height="100" /><figcaption>Biting Midge Larva</figcaption></figure></a></div>
+              <div class="item nonmicro noshell nolegs notail tolerant"><a href="specimens/blackfly-larva.html" data-transition="slide"><figure><img src="img/thumbs/blackfly-thumb.jpg" width="125" height="100" /><figcaption>Blackfly Larva</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail verySens"><a href="specimens/caddisfly.html" data-transition="slide"><figure><img src="img/thumbs/caddisfly-thumb.jpg" width="125" height="100" /><figcaption>Caddisfly</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail veryTol"><a href="specimens/water-beetle.html" data-transition="slide"><figure><img src="img/thumbs/water-beetle-thumb.jpg" width="125" height="100" /><figcaption>Creeping Water Beetle</figcaption></figure></a></div>
+              <div class="item micro noshell nolegs notail veryTol"><a href="specimens/cyclops.html" data-transition="slide"><figure><img src="img/thumbs/cyclopoid-thumb.jpg" width="125" height="100" /><figcaption>Cyclops</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs threetail veryTol"><a href="specimens/damselfly.html" data-transition="slide"><figure><img src="img/thumbs/damselfly-thumb.jpg" width="125" height="100" /><figcaption>Damselfly</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail veryTol"><a href="specimens/dragonfly.html" data-transition="slide"><figure><img src="img/thumbs/dragonfly-thumb.jpg" width="125" height="100" /><figcaption>Dragonfly</figcaption></figure></a></div>
+              <div class="item nonmicro noshell nolegs notail veryTol"><a href="specimens/flatworm.html" data-transition="slide"><figure><img src="img/thumbs/flatworm-thumb.jpg" width="125" height="100" /><figcaption>Flatworm</figcaption></figure></a></div>
+              <div class="item nonmicro twoshell nolegs notail tolerant"><a href="specimens/freshwater-mussel.html" data-transition="slide"><figure><img src="img/thumbs/mussel-thumb.jpg" width="125" height="100" /><figcaption>Freshwater Mussel</figcaption></figure></a></div>
+              <div class="item nonmicro noshell nolegs notail veryTol"><a href="specimens/segmented-worm.html" data-transition="slide"><figure><img src="img/thumbs/worm-thumb.jpg" width="125" height="100" /><figcaption>Segmented Worm</figcaption></figure></a></div>
+              <div class="item nonmicro noshell fourpairs onetail veryTol"><a href="specimens/freshwater-shrimp.html" data-transition="slide"><figure><img src="img/thumbs/shrimp-thumb.jpg" width="125" height="100" /><figcaption>Freshwater Shrimp</figcaption></figure></a></div>
+              <div class="item nonmicro oneshell nolegs notail veryTol"><a href="specimens/freshwater-snail.html" data-transition="slide"><figure><img src="img/thumbs/snail-thumb.jpg" /><figcaption>Freshwater Snail</figcaption></figure></a></div>
+              <div class="item nonmicro noshell fourpairs onetail tolerant"><a href="specimens/freshwater-yabby.html" data-transition="slide"><figure><img src="img/thumbs/yabby-thumb.jpg" width="125" height="100" /><figcaption>Freshwater Yabby</figcaption></figure></a></div>
+              <div class="item nonmicro noshell nolegs notail veryTol"><a href="specimens/hydra.html" data-transition="slide"><figure><img src="img/thumbs/hydra-thumb.jpg" width="125" height="100" /></figure><figcaption>Hydra</figcaption></a></div>
+              <div class="item nonmicro noshell nolegs notail veryTol"><a href="specimens/leech.html" data-transition="slide"><figure><img src="img/thumbs/leech-thumb.jpg" width="125" height="100" /><figcaption>Leech</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs threetail verySens"><a href="specimens/mayfly.html" data-transition="slide"><figure><img src="img/thumbs/mayfly-thumb.jpg" width="125" height="100" /><figcaption>Mayfly</figcaption></figure></a></div>
+              <div class="item nonmicro noshell nolegs notail veryTol"><a href="specimens/mosquito-larva.html" data-transition="slide"><figure><img src="img/thumbs/mosquito-thumb.jpg" width="125" height="100" /><figcaption>Mosquito Larva</figcaption></figure></a></div>
+              <div class="item nonmicro noshell nolegs notail veryTol"><a href="specimens/nonBiting-midge-larva.html" data-transition="slide"><figure><img src="img/thumbs/nonBiting-midge-thumb.jpg" width="125" height="100" /><figcaption>Non-Biting Midge</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail veryTol"><a href="specimens/diving-beetle.html" data-transition="slide"><figure><img src="img/thumbs/diving-beetle-thumb.jpg" width="125" height="100" /><figcaption>Predacious Diving Beetle</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail sensitive"><a href="specimens/rifle-beetle.html" data-transition="slide"><figure><img src="img/thumbs/rifleBeetle-thumb.jpg" width="125" height="100" /><figcaption>Rifle Beetle</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail veryTol"><a href="specimens/scav-water-beetle.html" data-transition="slide"><figure><img src="img/thumbs/scavBeetle-thumb.jpg" width="125" height="100" /><figcaption>Scav Water Beetle</figcaption></figure></a></div>
+              <div class="item nonmicro noshell fourpairs notail veryTol"><a href="specimens/scud.html" data-transition="slide"><figure><img src="img/thumbs/scud-thumb.jpg" /><figcaption>Scud</figcaption></figure></a></div>
+              <div class="item micro noshell fourpairs notail tolerant"><a href="specimens/seed-shrimp.html" data-transition="slide"><figure><img src="img/thumbs/seed-shrimp-thumb.jpg" width="125" height="100" /><figcaption>Seed Shrimp</figcaption></figure></a></div>
+              <div class="item nonmicro noshell fourpairs notail veryTol"><a href="specimens/slater.html" data-transition="slide"><figure><img src="img/thumbs/slater-thumb.jpg" width="125" height="100" /><figcaption>Slater</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs twotail verySens"><a href="specimens/stonefly-nymph.html" data-transition="slide"><figure><img src="img/thumbs/stonefly-thumb.jpg" width="125" height="100" /><figcaption>Stonefly Nymph</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail verySens"><a href="specimens/toad-bug.html" data-transition="slide"><figure><img src="img/thumbs/toadbug-thumb.jpg" width="125" height="100" /><figcaption>Toadbug</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail tolerant"><a href="specimens/toebiter.html" data-transition="slide"><figure><img src="img/thumbs/toebiter-thumb.jpg" width="125" height="100" /><figcaption>Toebiter</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail veryTol"><a href="specimens/water-boatman.html" data-transition="slide"><figure><img src="img/thumbs/boatman-thumb.jpg" width="125" height="100" /><figcaption>Water Boatman</figcaption></figure></a></div>
+              <div class="item micro noshell nolegs notail veryTol"><a href="specimens/water-flea.html" data-transition="slide"><figure><img src="img/thumbs/waterflea-thumb.jpg" width="125" height="100" /><figcaption>Water Flea</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs onetail veryTol"><a href="specimens/water-measurer.html" data-transition="slide"><figure><img src="img/thumbs/measurer-thumb.jpg" width="125" height="100" /><figcaption>Water Measurer</figcaption></figure></a></div>
+              <div class="item nonmicro noshell fourpairs notail sensitive"><a href="specimens/water-mite.html" data-transition="slide"><figure><img src="img/thumbs/watermite-thumb.jpg" width="125" height="100" /><figcaption>Water Mite</figcaption></figure></a></div>
+              <div class="item nonmicro noshell nolegs notail sensitive"><a href="specimens/water-penny.html" data-transition="slide"><figure><img src="img/thumbs/waterpenny-thumb.jpg" /><figcaption>Water Penny</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs onetail veryTol"><a href="specimens/water-scorpion.html" data-transition="slide"><figure><img src="img/thumbs/scorpion-thumb.jpg" width="125" height="100" /><figcaption>Water Scorpion</figcaption></figure></a></div>
+              <div class="item nonmicro noshell fourpairs nowings notail veryTol"><a href="specimens/water-spider.html" data-transition="slide"><figure><img src="img/thumbs/water-spider-thumb.jpg" width="125" height="100" /><figcaption>Water Spider</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail tolerant"><a href="specimens/water-strider.html" data-transition="slide"><figure><img src="img/thumbs/strider-thumb.jpg" /><figcaption>Water Strider</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail veryTol"><a href="specimens/water-treader.html" data-transition="slide"><figure><img src="img/thumbs/treader-thumb.jpg" width="125" height="100" /><figcaption>Water Treader</figcaption></figure></a></div>
+              <div class="item nonmicro noshell threepairs notail tolerant"><a href="specimens/whirligig.html" data-transition="slide"><figure><img src="img/thumbs/whirligig-thumb.jpg" width="125" height="100" /><figcaption>Whirligig Beetle</figcaption></figure></a></div>
+              </div>
+        </div>
+    </div>
+</div>  
+</div>
+<script type="text/javascript" charset="utf-8" src="js/fastClick.js"></script>
+<script type="text/javascript">
+    $(function(){
+        FastClick.attach(document.body);
+    });
+</script>
+<script type="text/javascript" src="specimens/lib/klass.min.js"></script>
+<script type="text/javascript" src="specimens/code.photoswipe-3.0.5.min.js"></script>  
+      
+<div data-role="footer" data-theme="f">
+    <h5>&copy; Copyright Tallebudgera Beach OEST RTO | OEEC</h5>
+  </div>
+</div>    
+</body>
+</html>

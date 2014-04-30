@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Geolocation Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/freshwater-custom.min.css" />
+<link rel="stylesheet" href="jquery-mobile-latest/jquery.mobile-1.4.2.min.css" />
+<link rel="stylesheet" href="css/index.css"> 
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="jquery-mobile-latest/jquery.mobile-1.4.2.min.js"></script>    </head>
+    <body>
+    <div data-role="page" id="contributors">
+      <div data-role="header" class="myHeader" data-theme="f" data-position="fixed">
+          <h1 id="title">Freshwater Macro invertebrates</h1>  
+            <div data-role="navbar" data-iconpos="left">
+            <ul>
+              <li><a href="index.html" data-transition="none" data-icon="info" data-prefetch>About</a></li>
+              <li><a href="filters.html" data-ajax="false" data-prefetch data-icon="grid">Filter</a></li>
+              <li><a href="#" data-transition="none" id="contributors" data-icon="custom" class="ui-btnactive ui-state-persist">Contributors</a></li>
+              <li><a href="glossary.html" data-transition="none" id="glossary" data-icon="custom" class="ui-icon-nodisc" data-prefetch>Glossary</a></li>
+              <li><a href="locator.html" data-icon="location" data-ajax="false" data-prefetch>Locator</a></li>
+            </ul>
+          </div>
+      </div>
+      <div class="ui-content" style="background:#FFFFFF; padding: 10px">
+        <h1>Affiliates and Contributors</h1>
+          <hr />
+          <p><span id="upText">Toohey Forest Environmental Education Centre would like to sincerely thank the follow for their assistance with the development of the Freshwater Macro Invertebrate App.</span></p>
+          <p><span id="upText">If you want to find out further information about each of the contributors, please tap on their logos to visit their website.</span></p>
+        <div id="wrapper">
+          <div id="contributor-row-1"><a onClick="window.open(encodeURI('http://www.natura-education.com/'), '_blank', 'location=yes');"><img src="img/eec-logos/natura" width="680" height="134" /></a><a onClick="window.open(encodeURI('http://oestraining.eq.edu.au/'), '_blank', 'location=yes');"><img src="img/eec-logos/oest.jpg" width="120" height="134" /></a><a onClick="window.open(encodeURI('http://dete.qld.gov.au'), '_blank', 'location=yes');"><img src="img/eec-logos/DETE.jpg" width="108" height="134" /></a></div>
+          <div id="contributor-row-2"><a onClick="window.open(encodeURI('http://www.amarooeec.eq.edu.au/'), '_blank', 'location=yes');"><img src="img/eec-logos/amaroo.jpg" width="220" height="183" /></a><a onClick="window.open(encodeURI('http://www.barambaheec.eq.edu.au/'), '_blank', 'location=yes');"><img src="img/eec-logos/barambah.jpg" width="253" height="183" /></a><a onClick="window.open(encodeURI('https://boyneisleec.eq.edu.au/Pages/default.aspx'), '_blank', 'location=yes');"><img src="img/eec-logos/boyne.jpg" width="144" height="183" /></a><a onClick="window.open(encodeURI('http://www.bunyavileec.eq.edu.au/'), '_blank', 'location=yes');"><img src="img/eec-logos/bunyaville.jpg" width="250" height="183" /></a></div> 
+          <div id="contributor-row-3"><a onClick="window.open(encodeURI('https://columbooeec.eq.edu.au/Pages/default.aspx'), '_blank', 'location=yes');"><img src="img/eec-logos/columboola.jpg" width="169" height="186" /></a><a onClick="window.open(encodeURI('http://jacobseec.eq.edu.au/'), '_blank', 'location=yes');"><img src="img/eec-logos/jacobsw.jpg" width="168" height="186" /></a><a onClick="window.open(encodeURI('https://nkieec.eq.edu.au/Pages/default.aspx'), '_blank', 'location=yes');"><img src="img/eec-logos/keppel.jpg" width="157" height="186" /></a><a onClick="window.open(encodeURI('http://nudgeebheec.eq.edu.au/'), '_blank', 'location=yes');"><img src="img/eec-logos/nudgee.jpg" width="196" height="186" /></a><a onClick="window.open(encodeURI('http://www.numinbaheec.eq.edu.au/'), '_blank', 'location=yes');"><img src="img/eec-logos/numinbah.jpg" width="181" height="186" /></a></div> 
+          <div id="contributor-row-4"><a onClick="window.open(encodeURI('https://palumaeec.eq.edu.au/'), '_blank', 'location=yes');"><img src="img/eec-logos/paluma.jpg" width="220" height="153" /></a><a onClick="window.open(encodeURI('https://stanleyrivereec.eq.edu.au'), '_blank', 'location=yes');"><img src="img/eec-logos/stanley.jpg" width="149" height="153" /></a><a onClick="window.open(encodeURI('http://thebeachschool.eq.edu.au/'), '_blank', 'location=yes');"><img src="img/eec-logos/talle.jpg" width="176" height="153" /></a><a onClick="window.open(encodeURI('https://tinarooeec.eq.edu.au/Pages/default.aspx'), '_blank', 'location=yes');"><img src="img/eec-logos/tinaroo.jpg" width="136" height="153" /></a><a onClick="window.open(encodeURI('http://www.toohforeeec.eq.edu.au/'), '_blank', 'location=yes');"><img src="img/eec-logos/tooheys.jpg" width="244" height="153" /></a></div> 
+        </div>
+      </div>
+      <div data-role="footer" data-theme="f">
+        <h5>&copy; Copyright Tallebudgera Beach OEST RTO | OEEC</h5> 
+      </div>
+    </div>
+    </body>
+</html>
