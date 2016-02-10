@@ -117,7 +117,8 @@ h1 {
 /* Custom css file for the Freshwater app */
 #upText {font-size: 16px!important;}
 #filters-wrapper {margin-top: 0px!important; padding-top: 0px!important;}
-#specimen-wrapper {width: 100%; padding: 15px; }
+#specimen-wrapper {width: 95%; padding: 15px; text-align: center; display: inline-block;}
+#Gallery {text-align: center; width: 85%; display: inline-block}
 div.myHeader {font-size: 20px!important;}
 div.ui-grid-b {padding: 20px 20px 20px 0px;}
 div.source{text-align:center}
@@ -125,8 +126,8 @@ body {text-transform: none!important;}
 hr { height: 2px; background-color: #ffffff;}
 .imgr {float:right; margin-left: 15px;}
 p#loadMaps {margin-top: 100px; text-align: center;}
-#map_canvas {width: 97.5%; height: 450px;}
-table.geoTable {width: 97.5%;}
+#map_canvas {width: 100%; height: 450px;}
+table.geoTable {width: 100%;}
 table.geoTable th {padding:5px; background-color: #333; color: #fff;}
 table.geoTable td {padding:5px;}
 table.geoTable td.head {background-color: #5e87b0; text-align: center; color: #fff; font-weight: bold;}
@@ -134,12 +135,18 @@ table.geoTable td.centre {text-align: center;}
 table.geoTable th,table.geoTable td {border: 2px solid #666;}
 td.noborder {border: none!important; background-color: none!important;}
 div#wrapper {margin-left: 5px; padding:15px!important;}
-div#contributor-row-1, div#contributor-row-2, div#contributor-row-3 {width: 100%; margin-bottom: 20px; text-align: center; }
-div#contributor-row-1 img {padding-right:20px;}
-div#contributor-row-2 img {padding-right:25px;}
-div#contributor-row-3 img {padding-right:17px;}
-div#contributor-row-4 img {padding-right:8px;}
-
+#sponsors {white-space: nowrap; text-align:center; margin-top: 30px;}
+#sponsors ul {margin-bottom: 25px; padding-left: 0px;}
+#sponsors ul li {margin-right: 20px;}
+#sponsors ul li {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+#sponsors ul li.big {max-width: 70%;}
+#sponsors ul li.small {max-width: 20%;}
+#sponsors ul li.medium {max-width: 30%;}
+#sponsors ul li img {max-width:100%;} 
 
 @media screen{
     @font-face
@@ -174,7 +181,7 @@ h2 {font-size: 14px!important;}
 ul.myGlossary li p {font-size: 13px!important;}
 table {font-size: 14px;}
 p {font-size: 14px;}
-div#container > div > a > figure > img {border: 5px solid #ffffff!important; box-shadow: 3px 3px 2px #ccc;}
+div#container > div > a > figure > img {border: 5px solid #f0f0f0!important; box-shadow: 3px 3px 2px #ccc; -webkit-box-shadow: 3px 3px 2px #ccc;}
 div#container > div > a, div#container > div > a:hover, div#container > div > a:visited {text-decoration: none; color: #777;}
 figure {padding:0px; margin:0px}
 figcaption{text-align: center;}
@@ -182,10 +189,12 @@ figcaption{text-align: center;}
 .ui-dialog .ui-header,
 .ui-dialog ui.content,
 .ui-dialog .ui-footer {
-   max-width: 900px!important;   
+   width: 100%!important;   
 }
 
-div.ui-content {padding: 15px;}
+div.ui-content {padding: 0px; text-align: center; }
+/*div#spec-content { text-align: center; background: #abb; }*/
+div#main-content {padding: 25px 50px 10px 50px; text-align: left;}
 
 #contributors:after {
     background-image: url("../icons/white/group@2x.png");
@@ -198,15 +207,13 @@ div.ui-content {padding: 15px;}
     background-size: 18px 18px;
 }
 /* Custom css file for the Freshwater app */
-img.border {border: 5px solid #ffffff!important; box-shadow: 5px 5px 3px #ccc; float: left;}
-#Gallery {padding-right: 20px;}
-table{width:96%; border: 1px solid #CCCCCC; background: #fff; border-collapse: collapse;}
+img.border {border: 5px solid #e6e4e4!important; -webkit-box-shadow: 5px 5px 3px #ccc; float: left;}
+table{width:100%; border: 1px solid #CCCCCC; background: #fff; border-collapse: collapse;}
+table.specimen-info td {text-align: left}
 tr td {padding:10px; border-spacing: 0px 0px; }
 .whiteBG {background:#FFFFFF;}
 .greyBG {background:#ececec;}
 div.clear { clear:both; margin-bottom: 10px; }
-hr.specimen { margin: 20px 0px 20px 0px; } 
-.video-expand {padding-right:44px;}
 div.myHeader > a {margin-top: 7px!important;}
 
 .loader {
